@@ -8,6 +8,11 @@
     "lint": "eslint . --fix --ignore-path .gitignore",
     "prepare": "husky install"
   },
+  "lint-staged": {
+    "src/**/*.{js,ts,vue}": [
+      "npm run lint"
+    ]
+  },
   "dependencies": {
     "@mdi/font": "7.0.96",
     "pinia": "^2.0.23",
@@ -26,6 +31,7 @@
     "eslint": "^8.0.0",
     "eslint-plugin-vue": "^9.0.0",
     "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
     "sass": "^1.63.6",
     "sass-loader": "^13.3.2",
     "typescript": "^5.0.0",
