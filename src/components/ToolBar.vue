@@ -49,9 +49,10 @@
 
 <script setup lang="ts">
 import { ref } from "vue"
+import type { Ref } from 'vue'
 
-let drawer = ref(false)
-let pin = ref(true)
+let drawer: Ref<boolean> = ref(false)
+let pin: Ref<boolean> = ref(true)
 </script>
 
 <style lang="scss">
