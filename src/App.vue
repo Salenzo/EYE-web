@@ -1,11 +1,12 @@
 <template>
   <v-app>
+    <ToolBar />
     <v-main>
-      <HelloWorld />
+      <router-view />
     </v-main>
   </v-app>
 </template>
 
 <script setup lang="ts">
-  import HelloWorld from '@/components/HelloWorld.vue'
+import ToolBar from '@/components/ToolBar.vue'
 </script>
