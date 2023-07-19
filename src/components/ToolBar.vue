@@ -50,12 +50,13 @@ import { storeToRefs } from 'pinia'
 const drawer = ref(false)
 const theme = useTheme()
 const store = useToolBarStore()
-const { pin } = storeToRefs(store)
+const { dark, pin } = storeToRefs(store)
 const isMouse = ref(true)
 const appBarStyle = ref("")
 
 function toggleTheme() {
-    theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+    dark.value = theme.global.current.value.dark
+    theme.global.name.value = dark.value ? 'light' : 'dark'
 }
 
 function togglePin() {
