@@ -51,8 +51,8 @@
 import { ref } from "vue"
 import type { Ref } from 'vue'
 
-let drawer: Ref<boolean> = ref(false)
-let pin: Ref<boolean> = ref(true)
+const drawer: Ref<boolean> = ref(false)
+const pin: Ref<boolean> = ref(true)
 </script>
 
 <style lang="scss">
