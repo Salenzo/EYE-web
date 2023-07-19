@@ -58,7 +58,7 @@ function togglePin() {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .right-icon {
     margin-left: 5px;
     color: #5CBBF6

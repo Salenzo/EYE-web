@@ -10,3 +10,7 @@
 <script setup lang="ts">
 import ToolBar from '@/components/ToolBar.vue'
 </script>
+
+<style lang="scss">
+@import "./assets/css/app.scss";
+</style>
