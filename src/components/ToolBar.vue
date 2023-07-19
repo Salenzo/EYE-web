@@ -17,26 +17,17 @@
         <v-btn icon="mdi-magnify" />
 
         <!--登录-->
-        <v-btn>
-            <span>Login</span>
-            <v-icon class="right-icon" icon="mdi-account" right></v-icon>
-        </v-btn>
+        <v-btn icon="mdi-account-circle" />
 
         <!--主题-->
-        <v-btn>
-            <span>Theme</span>
-            <v-icon class="right-icon" icon="mdi-theme-light-dark" theme="dark" right></v-icon>
-        </v-btn>
+        <v-btn icon="mdi-theme-light-dark" @click="toggleTheme" />
 
         <!--设置-->
-        <v-btn>
-            <span>Config</span>
-            <v-icon class="right-icon" icon="mdi-cog" right></v-icon>
-        </v-btn>
+        <v-btn icon="mdi-cog" />
 
         <!--固定-->
-        <v-btn icon="mdi-pin" v-if="pin" @click="pin = !pin" />
-        <v-btn icon="mdi-pin-off" v-else @click="pin = !pin" />
+        <v-btn icon="mdi-pin" v-if="pin" @click="togglePin" />
+        <v-btn icon="mdi-pin-off" v-else @click="togglePin" />
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" permanent>
@@ -49,14 +40,27 @@
 
 <script setup lang="ts">
 import { ref } from "vue"
-import type { Ref } from 'vue'
+import { useTheme } from 'vuetify'
+import { useToolBarStore } from '@/store/toolbar'
+import { storeToRefs } from 'pinia'
 
-const drawer: Ref<boolean> = ref(false)
-const pin: Ref<boolean> = ref(true)
+const drawer = ref(false)
+const theme = useTheme()
+const store = useToolBarStore()
+const { pin } = storeToRefs(store)
+
+function toggleTheme() {
+    theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+}
+
+function togglePin() {
+    pin.value = !pin.value
+}
 </script>
 
 <style lang="scss">
 .right-icon {
     margin-left: 5px;
+    color: #5CBBF6
 }
 </style>
