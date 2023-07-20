@@ -32,6 +32,7 @@ export default defineConfig({
       '.vue',
     ],
   },
+  base: '/EYE-web/',
   server: {
     port: 3000,
   },
