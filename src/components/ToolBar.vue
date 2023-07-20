@@ -7,9 +7,11 @@
 
             <!--标题-->
             <v-toolbar-title class="text-uppercase grey--text">
-                <span class="font-weight-light">Hello</span>
-                <!--离线状态为EYE 在线状态为用户名-->
-                <span color="white">EYE</span>
+                <button @click="$router.push({ name: 'Home' })">
+                    <span class="font-weight-light">Hello</span>
+                    <!--离线状态为EYE 在线状态为用户名-->
+                    <span color="white">EYE</span>
+                </button>
             </v-toolbar-title>
 
             <!-- 在v-spacer上面的标签将会在导航栏左侧 在v-spacer下面的标签将会在导航栏右侧 -->
@@ -19,7 +21,8 @@
             <v-btn icon="mdi-magnify" />
 
             <!--登录-->
-            <v-btn icon="mdi-account-circle" />
+            <v-btn icon="mdi-account-circle" @click="$router.push({ name: 'Login' })">
+            </v-btn>
 
             <!--主题-->
             <v-btn icon="mdi-theme-light-dark" @click="toggleTheme" />
