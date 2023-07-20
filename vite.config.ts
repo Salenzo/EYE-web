@@ -32,7 +32,7 @@ export default defineConfig({
       '.vue',
     ],
   },
-  base: '/0/',
+  base: '/app/',
   server: {
     port: 3000,
   },
