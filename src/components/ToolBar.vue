@@ -7,7 +7,7 @@
 
             <!--标题-->
             <v-toolbar-title class="text-uppercase grey--text">
-                <button @click="$router.push({ name: 'Home' })">
+                <button @click="$router.push('/')">
                     <span class="font-weight-light">Hello</span>
                     <!--离线状态为EYE 在线状态为用户名-->
                     <span color="white">EYE</span>
@@ -21,7 +21,7 @@
             <v-btn icon="mdi-magnify" />
 
             <!--登录-->
-            <v-btn icon="mdi-account-circle" @click="$router.push({ name: 'Login' })">
+            <v-btn icon="mdi-account-circle" @click="$router.push('/login')">
             </v-btn>
 
             <!--主题-->
@@ -38,7 +38,7 @@
 
     <v-navigation-drawer v-model="drawer" permanent>
         <v-list nav>
-            <v-list-item prepend-icon="mdi-map" title="Plays" value="plays"></v-list-item>
+            <v-list-item prepend-icon="mdi-map" title="Plays" value="plays" @click="$router.push('/plays')"></v-list-item>
             <v-list-item prepend-icon="mdi-cloud" title="Cloud" value="cloud"></v-list-item>
         </v-list>
     </v-navigation-drawer>
