@@ -88,8 +88,8 @@ function toggleDrawer(): void {
 
 watch(isMouse, (newValue: boolean) => {
     if (!pin.value) {
-        drawer.value = false;
-        appBarStyle.value = !newValue ? 'transform: translateY(-80%);' : '';
+        drawer.value = false
+        appBarStyle.value = !newValue ? 'transform: translateY(-80%);' : ''
     }
 })
 

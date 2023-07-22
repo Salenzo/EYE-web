@@ -22,30 +22,37 @@
                             Forgot login password?</a>
                     </div>
 
-                    <v-text-field v-model="password" :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
+                    <v-text-field v-model="password1" :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
                         :type="visible ? 'text' : 'password'" density="compact" placeholder="Enter your password"
                         prepend-inner-icon="mdi-lock-outline" variant="outlined"
                         @click:append-inner="visible = !visible"></v-text-field>
 
-                    <v-card v-if="failCount >= 3" class="mb-12" color="surface-variant" variant="tonal">
-                        <v-card-text v-if="failCount" class="text-medium-emphasis text-caption">
-                            Warning: After 3 consecutive failed login attempts, you account will be temporarily locked for
-                            three
-                            hours. If you must login now, you can also click "Forgot login password?" below to reset the
-                            login
-                            password.
+                    <v-text-field v-model="password2" :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
+                        :type="visible ? 'text' : 'password'" density="compact" placeholder="Enter again"
+                        prepend-inner-icon="mdi-lock-outline" variant="outlined"
+                        @click:append-inner="visible = !visible"></v-text-field>
+
+
+
+                    <v-card class="mb-6" color="surface-variant" variant="tonal">
+                        <v-card-text class="text-medium-emphasis text-caption">
+                            Warning: password length should be longer than 10
+                        </v-card-text>
+                    </v-card>
+                    <v-card class="mb-6" color="surface-variant" variant="tonal">
+                        <v-card-text class="text-medium-emphasis text-caption">
+                            Warning: passwords are inconsistent
+                        </v-card-text>
+                    </v-card>
+                    <v-card class="mb-6" color="surface-variant" variant="tonal">
+                        <v-card-text class="text-medium-emphasis text-caption">
+                            Warning: E-mail has already been used
                         </v-card-text>
                     </v-card>
 
                     <v-btn block class="mb-8" color="blue" size="large" variant="tonal" @click="login">
                         Log In
                     </v-btn>
-
-                    <v-card-text class="text-center">
-                        <a class="text-blue text-decoration-none" href="#" rel="noopener noreferrer" target="_blank">
-                            Sign up now <v-icon icon="mdi-chevron-right" @click="$router.push('/signup')"></v-icon>
-                        </a>
-                    </v-card-text>
                 </v-card>
             </v-container>
         </v-layout>
@@ -55,16 +62,12 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import Api from '@/api/index'
-import { useRouter } from 'vue-router'
-import { sha256 } from 'js-sha256'
-
-const router = useRouter()
 
 const visible = ref(false)
 const user = ref('')
 const isEmail = ref(false)
-const password = ref('')
-const failCount = ref(0)
+const password1 = ref('')
+const password2 = ref('')
 
 function verifyEmail(email: string): boolean {
     return email.toLowerCase()
@@ -86,19 +89,16 @@ watch(user, (newValue: string) => {
 function login(): void {
     let formData = new FormData()
     formData.append('user', user.value)
-    formData.append('password', sha256(password.value))
-    console.log(sha256(password.value))
+    formData.append('password', password1.value)
 
     Api.login(formData).then((res) => {
         console.log(res.status)
+        console.log(res)
         if (res.status == 200 && res.ok) {
             console.log('login resolved')
-            router.push('/')
             return
         }
         console.log('login rejected')
-        //TODO 需要后端存储
-        failCount.value += failCount.value < 3 ? 1 : 0
     }).catch(error => console.log(error))
 }
 </script>
