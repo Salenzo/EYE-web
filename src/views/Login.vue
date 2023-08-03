@@ -42,9 +42,10 @@
                     </v-btn>
 
                     <v-card-text class="text-center">
-                        <a class="text-blue text-decoration-none" href="#" rel="noopener noreferrer" target="_blank">
-                            Sign up now <v-icon icon="mdi-chevron-right" @click="$router.push('/signup')"></v-icon>
-                        </a>
+                        <v-btn class="text-blue text-decoration-none" rel="noopener noreferrer" target="_blank"
+                            @click="$router.push('/signup')">
+                            Sign up now <v-icon icon="mdi-chevron-right" />
+                        </v-btn>
                     </v-card-text>
                 </v-card>
             </v-container>

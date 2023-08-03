@@ -11,6 +11,12 @@ export default {
             method: 'POST',
             body: data
         })
+    },
+    signup(data: FormData) { // 注册
+        return fetch(BASE_URL + '/signup', {
+            method: 'POST',
+            body: data
+        })
     }
 }
 
